@@ -1,5 +1,7 @@
 "Salsa20 and the closely related ChaCha are stream ciphers developed by Daniel J. Bernstein. Salsa20, the original cipher, was designed in 2005, then later submitted to the eSTREAM European Union cryptographic validation process by Bernstein. ChaCha is a modification of Salsa20 published in 2008. It uses a new round function that increases diffusion and increases performance on some architectures" - wikipedia https://en.wikipedia.org/wiki/Salsa20
-Source of specification: Salsa20 -> https://cr.yp.to/snuffle/spec.pdf ChaCha20: https://datatracker.ietf.org/doc/html/rfc7539#section-2.1
+Source of specification: 
+Salsa20 -> https://cr.yp.to/snuffle/spec.pdf
+ChaCha20 -> https://datatracker.ietf.org/doc/html/rfc7539#section-2.1
 A note on the Salsa20 implementation: The implementation was a little hard to understand, but with the help of some principles followed and the test vectors, an algorithm which could encrypt was made. In the process though, somewhat of a large deviation was taken. Salsa20 operates on little endian data, thus the specification specifies a little endian conertion function was defined. Instead of doing this hassle, the class Word32() I had originally written for Blake2 (in 64 bits) takes care of the convertion (which itself relies on Python's inbuilt functions such as int.from_bytes(), int.to_bytes() with the byteorder argument being 'little'. Usage of this class simplified the algorithm a lot, as did the secondary functions defined in the class.
 
 Important Note: The algorithm was tested only on some of the test vectors, therefore reliability being virtually non-existent in this implementation. Also, this implementation is meant for educational purposes only, and not suitable for sensitive apllications at all! 
